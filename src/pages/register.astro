@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Default.astro';
+
+if (Astro.locals.isLoggedIn) {
+  return Astro.redirect('/');
+}
+---
+
+<Layout>
+  <div>
+    <div>
+      <div>
+        <h1>Register</h1>
+        <p>
+          create an account.
+        </p>
+
+        <form action='/api/auth/register' method='post' class='grid gap-10'>
+            <label slot='label' for='email'>Email</label>
+            <input
+              class='input'
+              type='email'
+              name='email'
+              id='email'
+              placeholder='houston@astro.build'
+              required
+            />
+            <label slot='label' for='password'>Password</label>
+            <input
+              class='input'
+              type='password'
+              name='password'
+              id='password'
+              required
+            />
+            <label slot='label' for='confirmPassword'>Confirm Password</label>
+            <input
+              class='input'
+              type='password'
+              name='confirmPassword'
+              id='confirmPassword'
+              required
+            />
+          <button type='submit' class='button button-primary'>Register</button>
+        </form>
+        <p class='mt-8 text-center'>
+          Already have an account? <a href='/login' class='underline'
+            >Log in here</a
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout>
